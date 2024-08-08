@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_package = "com.example.pojo.client_stream";
+import "controller/server_streaming.proto";
+
+service BookCartStore {
+  rpc totalCartValue (stream Book) returns (Cart) {}
+}
+service BookLiveCartStore {
+  rpc liveCartValue (stream Book) returns (stream Cart) {}
+
+}
+message Cart {
+  int32 books = 1;
+  int32 price = 2;
+}
